@@ -1,0 +1,40 @@
+{
+  "homePage": "renderer/home.html",
+  "searchEngine": "https://duckduckgo.com/?t=ffab&ai=web&q=",
+  "RpcEnabled": true,
+  "darkMode": true,
+  "adblock": true,
+  "autoUpdate": true,
+  "trackingProtection": true,
+  "blockDangerous": true,
+  "warnHttp": true,
+  "checkSSL": true,
+  "askDownloadLocation": true,
+  "scanDownloads": true,
+  "showBookmarksBar": true,
+  "animations": true,
+  "hardwareAcceleration": true,
+  "discordRPC": true,
+  "systemProxy": true,
+  "preloadPages": true,
+  "apis": {
+    "VerifiedSites": "https://org.maxlware.com/assets/mxlw-browser/verified_sites.json"
+  },
+  "adblock_sources": [
+    "https://org.maxlware.com/assets/mxlw-browser/adblock.txt"
+  ],
+  "HideProxy": {
+    "api": [
+      "proxy1.maxlware.fr",
+      "proxy2.eletrix.fr"
+    ],
+    "auto_enabled": true,
+    "token": ""
+  },
+  "statistics": {
+    "adsBlocked": 0,
+    "trackersBlocked": 0,
+    "dataSaved": 0,
+    "sitesVisited": 41
+  }
+}
