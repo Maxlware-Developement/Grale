@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - Grale</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #4895ef;
+      --secondary: #7209b7;
+      --accent: #f72585;
+      --light: #ffffff;
+      --light-bg: rgba(255, 255, 255, 0.95);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f0 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-top: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: white;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-secondary);
+      font-size: 14px;
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .main-section {
+      background: var(--light-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+
+    .search-container {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 50px 16px 24px;
+      font-size: 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      background: white;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 5px 20px rgba(67, 97, 238, 0.1);
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .search-btn:hover {
+      background: var(--secondary);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .top-sites {
+      margin-top: 30px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .site-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 15px;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+    .site-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
+    }
+
+    .site-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 10px;
+      background: linear-gradient(135deg, #4361ee, #7209b7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .site-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .site-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .version-info {
+      background: rgba(67, 97, 238, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .version-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .version-badge {
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .version-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .version-details {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .quick-settings {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .quick-btn {
+      padding: 12px 24px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .quick-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .sites-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .quick-settings {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .quick-btn {
+        width: 200px;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-section {
+        padding: 25px;
+      }
+      
+      .sites-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-compass"></i>
+        </div>
+        <h1>Grale</h1>
+      </div>
+      <p class="tagline">Navigateur rapide et sécurisé par Maxlware Developement</p>
+    </header>
+
+    <section class="main-section">
+      <div class="search-container">
+        <input type="text" class="search-input" id="search" placeholder="Rechercher sur le web ou entrer une URL...">
+        <button class="search-btn" id="searchBtn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+      <div class="top-sites">
+        <h3 class="section-title">
+          <i class="fas fa-star"></i>
+          Sites recommandés
+        </h3>
+        <div class="sites-grid">
+          <a href="https://github.com" class="site-card" id="site-github">
+            <div class="site-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="site-name">GitHub</div>
+            <div class="site-desc">Développement collaboratif</div>
+          </a>
+          
+          <a href="https://maxlware.com" class="site-card" id="site-maxlware">
+            <div class="site-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="site-name">Maxlware</div>
+            <div class="site-desc">Nos projets</div>
+          </a>
+          
+          <a href="https://developer.mozilla.org" class="site-card" id="site-mdn">
+            <div class="site-icon">
+              <i class="fab fa-mdn"></i>
+            </div>
+            <div class="site-name">MDN Web Docs</div>
+            <div class="site-desc">Documentation web</div>
+          </a>
+          
+          <a href="https://youtube.com" class="site-card" id="site-youtube">
+            <div class="site-icon">
+              <i class="fab fa-youtube"></i>
+            </div>
+            <div class="site-name">YouTube</div>
+            <div class="site-desc">Vidéo et tutoriels</div>
+          </a>
+          
+          <a href="https://discord.com" class="site-card" id="site-discord">
+            <div class="site-icon">
+              <i class="fab fa-discord"></i>
+            </div>
+            <div class="site-name">Discord</div>
+            <div class="site-desc">Communauté</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="version-info">
+        <div class="version-header">
+          <span class="version-badge">TEST</span>
+          <span class="version-title">Grale 1.2.0</span>
+        </div>
+        <p class="version-details">
+          Version de développement • Dernière mise à jour : 5 Février 2026<br>
+          <small>Projet open source par Maxlware Developement</small>
+        </p>
+      </div>
+    </section>
+
+    <div class="quick-settings">
+      <button class="quick-btn" id="settingsBtn">
+        <i class="fas fa-cog"></i>
+        Paramètres
+      </button>
+      <button class="quick-btn" id="historyBtn">
+        <i class="fas fa-history"></i>
+        Historique
+      </button>
+      <button class="quick-btn" id="bookmarksBtn">
+        <i class="fas fa-bookmark"></i>
+        Favoris
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const search = document.getElementById('search');
+    const searchBtn = document.getElementById('searchBtn');
+    
+    function performSearch() {
+      const value = search.value.trim();
+      if (!value) return;
+      
+      if (value.includes('.') || value.startsWith('http')) {
+        const url = value.startsWith('http') ? value : `https://${value}`;
+        location.href = url;
+      } else {
+        location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
+      }
+    }
+    
+    search.addEventListener('keydown', e => {
+      if (e.key === 'Enter') performSearch();
+    });
+    
+    searchBtn.addEventListener('click', performSearch);
+    
+    const siteLinks = document.querySelectorAll('.site-card');
+    siteLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = link.getAttribute('href');
+        if (url) location.href = url;
+      });
+    });
+    
+    document.getElementById('settingsBtn').addEventListener('click', () => {
+      window.open('settings.html', '_blank');
+    });
+    
+    document.getElementById('historyBtn').addEventListener('click', () => {
+      alert('Historique - Fonctionnalité en développement');
+    });
+    
+    document.getElementById('bookmarksBtn').addEventListener('click', () => {
+      alert('Favoris - Fonctionnalité en développement');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Grale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="titlebar" id="drag-region">
+      <div class="tabs-section">
+        <div class="tabs-container" id="tabs">
+        </div>
+
+        <button id="new-tab" title="Nouvel onglet (Ctrl+T)">+</button>
+      </div>
+      
+      <div class="window-controls">
+        <button id="minimize" title="Réduire"><i class="fas fa-minus"></i></button>
+        <button id="maximize" title="Agrandir"><i class="far fa-square"></i></button>
+        <button id="close" title="Fermer"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="url-container">
+        <i class="fas fa-lock security-indicator"></i>
+        <input type="text" id="url" placeholder="Rechercher ou entrer une URL..." autocomplete="off" />
+        <button id="go" title="Aller à cette URL">Aller</button>
+      </div>
+
+      <div id="verified-badge" class="hidden">
+        <i class="fas fa-shield-alt"></i>
+        <span>Sécurisé</span>
+        <div class="verified-info">
+          Connexion sécurisée par HTTPS. Vos données sont chiffrées.
+        </div>
+      </div>
+
+      <div class="toolbar-actions">
+        <button class="toolbar-btn" id="bookmark-btn" title="Favoris">
+          <i class="far fa-bookmark"></i>
+        </button>
+        <button class="toolbar-btn" id="history-btn" title="Historique">
+          <i class="fas fa-history"></i>
+        </button>
+        <button class="toolbar-btn" id="menu-btn" title="Menu">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
