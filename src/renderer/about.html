@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos - Grale</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #4895ef;
+      --secondary: #7209b7;
+      --accent: #f72585;
+      --light: #ffffff;
+      --light-bg: rgba(255, 255, 255, 0.95);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --success: #27ae60;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f0 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: var(--light-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    .header-title h1 {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .header-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .close-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: var(--transition);
+    }
+
+    .close-btn:hover {
+      background: var(--danger);
+      color: white;
+      border-color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 40px rgba(67, 97, 238, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .version-badge {
+      display: inline-block;
+      padding: 6px 15px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 16px;
+      opacity: 0.9;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--light-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .version-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .version-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .version-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .version-item:hover {
+      border-color: var(--primary);
+    }
+
+    .version-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .version-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .version-value.latest {
+      color: var(--success);
+    }
+
+    .version-value.outdated {
+      color: var(--warning);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #f7fafc;
+      transform: translateY(-2px);
+    }
+
+    .btn-warning {
+      background: var(--warning);
+      color: white;
+      box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+    }
+
+    .btn-warning:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .status-message {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 14px;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .status-success {
+      border-color: var(--success);
+      background: rgba(39, 174, 96, 0.05);
+      color: var(--success);
+    }
+
+    .status-warning {
+      border-color: var(--warning);
+      background: rgba(243, 156, 18, 0.05);
+      color: var(--warning);
+    }
+
+    .status-info {
+      border-color: var(--primary);
+      background: rgba(67, 97, 238, 0.05);
+      color: var(--primary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scrollable-content {
+      max-height: 250px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .scrollable-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .scrollable-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    .scrollable-content::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .scrollable-content p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+
+    .scrollable-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 20px 0 10px;
+    }
+
+    .scrollable-content ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .scrollable-content li {
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      background: var(--light-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .shortcut-hint {
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 30px;
+      }
+      
+      .hero-content h2 {
+        font-size: 24px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .container {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .close-btn {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-icon">
+          <i class="fas fa-compass"></i>
+        </div>
+        <div class="header-title">
+          <h1>Grale</h1>
+          <p class="header-subtitle">Navigateur moderne et sécurisé</p>
+        </div>
+      </div>
+      <button class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </button>
+    </header>
+
+    <section class="hero-section">
+      <div class="hero-content">
+        <span class="version-badge">TEST 1.2.0</span>
+        <h2>Refonte de l'interface utilisateur anciennement Mxlw Browser</h2>
+        <p>
+          Grale est une nouvelle version de Mxlw Browser avec un nouveau nom, une nouvelle identité visuelle
+           et une interface utilisateur entièrement repensée pour offrir une expérience de navigation plus moderne, intuitive et agréable. 
+           Nous avons travaillé dur pour créer un design épuré, des animations fluides et une meilleure organisation des fonctionnalités afin 
+           de rendre votre navigation plus efficace et plaisante.
+        </p>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <h3 class="card-title">Vérification de version</h3>
+        </div>
+        
+        <div class="version-grid">
+          <div class="version-item">
+            <div class="version-label">Version actuelle</div>
+            <div class="version-value" id="currentVersion">1.2.0</div>
+          </div>
+          
+          <div class="version-item">
+            <div class="version-label">Dernière version</div>
+            <div class="version-value" id="latestVersion">Vérification...</div>
+          </div>
+        </div>
+        
+        <div id="updateStatus" class="status-message"></div>
+        
+        <button class="btn btn-primary" id="checkUpdateBtn">
+          <i class="fas fa-sync"></i>
+          Vérifier les mises à jour
+        </button>
+        
+        <button class="btn btn-warning" id="manualUpdateBtn" style="display: none;">
+          <i class="fas fa-download"></i>
+          Télécharger la mise à jour
+        </button>
+        
+        <a href="https://github.com/Maxlware-Developement/Grale" 
+           class="btn btn-secondary" 
+           target="_blank" 
+           id="githubBtn">
+          <i class="fab fa-github"></i>
+          Voir sur GitHub
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 class="card-title">Crédits & Contributeurs</h3>
+        </div>
+        
+        <div class="scrollable-content" id="creditsContent">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3 class="card-title">Licence MPL 2.0</h3>
+        </div>
+        
+        <div class="scrollable-content" id="licenseContent">
+        </div>
+        
+        <a href="#" class="btn btn-secondary" id="viewFullLicenseBtn">
+          <i class="fas fa-external-link-alt"></i>
+          Voir la licence complète
+        </a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2025 Maxlware Developement • Navigateur open source sous licence MPL 2.0</p>
+      <p>
+        <a href="mailto:contact@maxlware.com">contact@maxlware.com</a> • 
+        <a href="https://maxlware.com" target="_blank">maxlware.com</a>
+      </p>
+      <div class="shortcut-hint">
+        <i class="fas fa-keyboard"></i> Ctrl+Alt+C pour ouvrir/fermer
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const closeBtn = document.getElementById('closeBtn');
+    const checkUpdateBtn = document.getElementById('checkUpdateBtn');
+    const manualUpdateBtn = document.getElementById('manualUpdateBtn');
+    const updateStatus = document.getElementById('updateStatus');
+    const currentVersionEl = document.getElementById('currentVersion');
+    const latestVersionEl = document.getElementById('latestVersion');
+    const creditsContent = document.getElementById('creditsContent');
+    const licenseContent = document.getElementById('licenseContent');
+    const viewFullLicenseBtn = document.getElementById('viewFullLicenseBtn');
+
+    let latestVersionAvailable = null;
+
+    const defaultCredits = `
+      <h3>Développement Principal</h3>
+      <ul>
+        <li><strong>Maxlware</strong> - Fondateur & Lead Developer</li>
+        <li><strong>Équipe Maxlware Developement</strong> - Développement & Design</li>
+      </ul>
+      
+      <h3>Contributeurs</h3>
+      <ul>
+        <li>EletrixTime</li>
+        <li>mydkong</li>
+      </ul>
+      
+      <h3>Technologies utilisées</h3>
+      <ul>
+        <li>Electron - Framework d'application desktop</li>
+        <li>Node.js - Environnement d'exécution</li>
+        <li>Chromium - Moteur de rendu web</li>
+        <li>HTML5/CSS3/JavaScript - Interface utilisateur</li>
+      </ul>
+      
+      <h3>Remerciements</h3>
+      <p>Merci à tous nos testeurs bêta et à la communauté pour leur soutien.</p>
+    `;
+
+    const defaultLicense = `
+      <h3>Mozilla Public License 2.0</h3>
+      <p>
+        Ce logiciel est distribué sous la licence Mozilla Public License 2.0 (MPL 2.0).
+        Cette licence permet l'utilisation, la modification et la distribution du code source,
+        avec certaines conditions pour protéger les contributeurs.
+      </p>
+      
+      <h3>Points clés de la licence</h3>
+      <ul>
+        <li>Utilisation commerciale autorisée</li>
+        <li>Modification autorisée</li>
+        <li>Distribution autorisée</li>
+        <li>Patent grant inclus</li>
+        <li>Notification des modifications requise</li>
+        <li>Source code must be made available</li>
+      </ul>
+      
+      <h3>Respect de la licence</h3>
+      <p>
+        Si vous modifiez ce logiciel, vous devez rendre vos modifications disponibles
+        sous les mêmes termes de licence et indiquer les changements apportés.
+      </p>
+    `;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      creditsContent.innerHTML = defaultCredits;
+      licenseContent.innerHTML = defaultLicense;
+      
+      checkForUpdates();
+      
+      viewFullLicenseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open('https://www.mozilla.org/en-US/MPL/2.0/', '_blank');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      if (window.electronAPI) {
+        window.electronAPI.send('close-about');
+      } else {
+        window.close();
+      }
+    });
+
+    checkUpdateBtn.addEventListener('click', () => {
+      checkForUpdates();
+    });
+
+    manualUpdateBtn.addEventListener('click', () => {
+      if (latestVersionAvailable) {
+        if (window.electronAPI) {
+          window.electronAPI.send('open-external-link', 
+            'https://github.com/Maxlware-Developement/Mxlw-browser/releases');
+        } else {
+          window.open('https://github.com/Maxlware-Developement/Mxlw-browser/releases', '_blank');
+        }
+      }
+    });
+
+    function checkForUpdates() {
+      updateStatus.textContent = "Vérification en cours...";
+      updateStatus.className = "status-message status-info";
+      updateStatus.style.display = "block";
+      
+      checkUpdateBtn.disabled = true;
+      checkUpdateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Vérification...';
+      
+      setTimeout(() => {
+        simulateUpdateCheck();
+      }, 1500);
+    }
+
+    function simulateUpdateCheck() {
+      const currentVersion = "1.2.0";
+      const fakeLatestVersion = "1.2.0"; // Test
+      const isUpdateAvailable = fakeLatestVersion !== currentVersion;
+      
+      latestVersionEl.textContent = fakeLatestVersion;
+      
+      if (isUpdateAvailable) {
+        latestVersionAvailable = fakeLatestVersion;
+        latestVersionEl.className = "version-value latest";
+        
+        updateStatus.textContent = `🎉 Nouvelle version disponible : v${fakeLatestVersion}`;
+        updateStatus.className = "status-message status-warning";
+        updateStatus.style.display = "block";
+        
+        manualUpdateBtn.style.display = "block";
+      } else {
+        latestVersionEl.className = "version-value";
+        
+        updateStatus.textContent = "✅ Vous utilisez la dernière version";
+        updateStatus.className = "status-message status-success";
+        updateStatus.style.display = "block";
+        
+        manualUpdateBtn.style.display = "none";
+      }
+      
+      checkUpdateBtn.disabled = false;
+      checkUpdateBtn.innerHTML = '<i class="fas fa-sync"></i> Vérifier à nouveau';
+      
+      setTimeout(() => {
+        updateStatus.style.display = "none";
+      }, 5000);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.altKey && e.code === 'KeyC') {
+        if (window.electronAPI) {
+          window.electronAPI.send('close-about');
+        } else {
+          window.close();
+        }
+      }
+      
+      if (e.key === 'Escape') {
+        if (window.electronAPI) {
+          window.electronAPI.send('close-about');
+        } else {
+          window.close();
+        }
+      }
+    });
+
+    if (window.electronAPI) {
+      window.electronAPI.receive('update-available', (version) => {
+        latestVersionAvailable = version;
+        latestVersionEl.textContent = version;
+        latestVersionEl.className = "version-value latest";
+        
+        updateStatus.textContent = `🎉 Mise à jour disponible : v${version}`;
+        updateStatus.className = "status-message status-warning";
+        updateStatus.style.display = "block";
+        
+        manualUpdateBtn.style.display = "block";
+        checkUpdateBtn.disabled = false;
+        checkUpdateBtn.innerHTML = '<i class="fas fa-sync"></i> Vérifier à nouveau';
+      });
+      
+      window.electronAPI.receive('update-status', (message) => {
+        latestVersionEl.textContent = message.includes("à jour") 
+          ? currentVersionEl.textContent 
+          : "Inconnue";
+        
+        if (message.includes("à jour")) {
+          latestVersionEl.className = "version-value";
+        } else {
+          latestVersionEl.className = "version-value outdated";
+        }
+        
+        updateStatus.textContent = message;
+        updateStatus.className = "status-message status-info";
+        updateStatus.style.display = "block";
+        
+        manualUpdateBtn.style.display = "none";
+        checkUpdateBtn.disabled = false;
+        checkUpdateBtn.innerHTML = '<i class="fas fa-sync"></i> Vérifier à nouveau';
+        
+        setTimeout(() => {
+          updateStatus.style.display = "none";
+        }, 3000);
+      });
+      
+      window.electronAPI.receive('about-data', (data) => {
+        currentVersionEl.textContent = data.currentVersion || "1.2.0";
+        if (data.creditsText) {
+          creditsContent.textContent = data.creditsText;
+        }
+        if (data.licenseText) {
+          licenseContent.textContent = data.licenseText;
+        }
+      });
+    }
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-5px)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
